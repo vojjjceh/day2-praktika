@@ -1,0 +1,95 @@
+:root{
+--primary-color: #141414;
+--A: calc:(1vw + 1vh);
+--transition: 1.25s cubic-bezier(.2,.5,0,1);
+--transition-cursor: 2s cubic-bezier(.05,.5,0,1);
+}
+html, body{
+    font-family: "arsenal-regular";
+    text-decoration: none;
+    
+}
+sup{
+    font-size: 20px;
+    color: gray;
+}
+hr{
+margin: 0px;
+left: 160px;
+position: relative;
+}
+
+.magic-list{
+z-index: 999;
+position: relative;
+left: 50px;
+}
+.magic-list:hover{
+    left: 0px;
+    transition: transform var(--transition);
+    transition-duration: .25 s;
+    }
+a{
+   text-decoration: none; 
+   color: black;
+}
+.magic-list__header{
+transition: transform var(--transition);
+font-size: 58px;
+height: 200px;
+
+}
+.magic-list__item{
+border-bottom: 1px solid black;
+}
+.magic-list__item:first-child{
+    border-top: 1.5px solid var(--A);
+}
+.magic-list__item:hover .magic-list__header,
+.magic-list__item:hover::before{
+    cursor: none;
+    transform: translate3d(calc(var(--A)*-5),0,0);
+}
+.magic-list__item::before{
+    transition: transform var(--transition);
+    transition-delay: .025s;
+    will-change: transform;
+    letter-spacing: .5px;
+}
+.cursor{
+    transition: transform var(--transition-cursor), height 1s ease; 
+    display: none;
+    z-index: 998;
+    position: fixed;
+    will-change: transform;
+    --cursor-transform: translate3d(var(--move-x), var(--move-y),0);
+}
+.magic-list__item:hover .cursor{
+    display: block;
+    transition-delay: .025s;
+    height: var(--height);
+}
+.cursor__image{
+    transition: transform var(--transition-cursor);
+    --cursor-transform: translate3d(calc(var(--move-x)/1), calc(var(--move-y)/-6),0);
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transform: var(--cursor-transform) scale(1.5);
+    cursor: none;
+    width: calc(var(--width)*2);
+    height: calc(var(--height)*2);
+    top: calc(var(--height)*-.4);
+    left: calc(var(--width)*-.25);
+}
+.magic-list__item:hover .cursor__image{
+    transition-duration: .3s;
+}
+@font-face {
+    font-family: "arsenal-regular";
+    src: url("../fonts/arsenal-regular.woff2");
+    }
+
+
+
+
